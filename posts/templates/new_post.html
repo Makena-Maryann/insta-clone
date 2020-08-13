@@ -5,11 +5,9 @@
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- {% if title %}
-  <title>Instagram - {{title}}</title>
-  {% else %}
-    <title> Instagram </title>
- {% endif %}
+ 
+ <title>New Post</title>
+  {{form.media}}
 
  {% block styles %}
     {% bootstrap_css %}
@@ -23,9 +21,12 @@
  {% endblock %}
 </head>
 <body>
- {% block content %} 
- 
- {%endblock%}
+ <form  action="{%url 'new-post'%}" method="post" enctype="multipart/form-data">
+  {%csrf_token%}
+
+  {% bootstrap_form form%}
+  <input type="submit" class="btn btn-success btn-lg" value="Post">
+</form>
 
  {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -13,7 +13,9 @@
       </a>
       <div class="card-body">
         <p class="card-text">
-         {{ post.caption }}
+         {% autoescape on %} 
+         {{ post.caption| safe }}
+         {% endautoescape %}
         </p>
         <p class="muted"> {{ image.date_posted|timesince }}</p>
       </div>
