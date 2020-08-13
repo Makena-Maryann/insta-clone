@@ -1,0 +1,21 @@
+{%extends 'posts/base.html'%}
+
+ {% block content %}
+
+ <div class="container">
+
+   <div class="row">
+     <img src="{{image.image.url}}"  class="img-responsive" alt="">
+   </div>
+
+   <div class="row">
+     <h1 class="text-center">{{image.caption}}</h1>
+   </div>
+
+   <div class="row">
+     <p>Posted {{image.date_posted|timesince}} by {{article.editor.first_name}}</p>
+   </div>
+
+ </div>
+
+ {% endblock %}
