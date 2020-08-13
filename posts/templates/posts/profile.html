@@ -1,0 +1,38 @@
+{%extends 'posts/base.html'%} 
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+     <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="{{profile.profile_photo.url}}" alt="Card image cap">
+     </div>
+    </div>
+    <div class="col-md-8">
+      <h4>
+        {{profile.owner.username}}
+      </h4>
+      <h6>
+        {{profile.bio}}
+      </h6>
+      <a href="" class="btn btn-primary">
+        Edit Profile
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <a href="{%url 'new-post'%}" class="btn btn-primary">
+      Make a post
+    </a>
+    {% for photo in photos %}
+   <div class="col-xs-6 col-sm-6 col-md-4 col-lg-6">
+      <img src="{{photo.image.url}}" class="img-responsive" alt="Image">
+   </div>
+ 
+   {% empty %}
+    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-6">
+       <h2> There are No Images </h2>
+    </div> 
+   {% endfor %} 
+  </div>
+</div>
+{% endblock %}
