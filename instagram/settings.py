@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from decouple import config,Csv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'czw!-9k6qi$l%&f*ms-ri6fxeo%=6(m^x(wwx_o+8z59*w3v)z'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -33,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     'bootstrap4',
+    'tinymce',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
