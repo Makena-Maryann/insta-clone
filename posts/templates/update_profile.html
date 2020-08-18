@@ -6,7 +6,7 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
- <title>New Post</title>
+ <title>Profile Update</title>
   {{form.media}}
 
  {% block styles %}
@@ -28,10 +28,10 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-header font">
-            <h3 class="text-center font">Add a post</h3>
+            <h3 class="text-center font">Update your profile</h3>
           </div>
           <div class="card-body">
-            <form  action="{%url 'new-post'%}" method="post" enctype="multipart/form-data">
+            <form  action="{%url 'update-profile'%}" method="post" enctype="multipart/form-data">
               {%csrf_token%}
             
               {% bootstrap_form form%}

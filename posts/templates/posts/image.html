@@ -9,15 +9,34 @@
    </div>
 
    <div class="row">
-     <h1 class="text-center">{ {% autoescape on %} 
+     <p class="text-center">
+       {% autoescape on %} 
       {{ image.caption| safe }}
-      {% endautoescape %}</h1>
+      {% endautoescape %}</p>
    </div>
 
    <div class="row">
-     <p>Posted {{image.date_posted|timesince}} by {{image.profile.owner.username}}</p>
+     <p>Posted {{image.date_posted|timesince}} by {{user.username}}</p>
    </div>
-
+   
+   <div class="row">
+     {% if comments %}
+        {% if number == 1 %}
+        <p>{{number}} comment</p>
+        {% else %}
+        <p>{{number}} comments</p>
+        {% endif %}
+        
+        {% for comment in comments%}
+        {% autoescape on %}
+        <p>{{comment.content| safe}}</p>
+        {% endautoescape %}
+        <p>Posted by {{comment.owner.username}}</p>
+        {% endfor%}
+      {% else %}
+      <p>No comments</p> 
+      {% endif %} 
+   </div>
  </div>
 
  {% endblock %}

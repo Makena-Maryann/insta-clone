@@ -2,6 +2,7 @@
 {% load bootstrap4 %}
 {% block content %}
 <div class="container">
+  <div class="row mt-5 pt-5"></div>
   <div class="row">
     <!-- Empty div -->
     <div class="col-md-4"></div>
@@ -9,12 +10,12 @@
       {% if form.errors %}
         <p> Password or Username is incorrect </p>
       {% endif %}
-      <div class="panel panel-default">
+      <div class="card">
 
-        <div class="panel-heading">
-          <h3 class="text-center">Sign In</h3>
+        <div class="card-header">
+          <h3 class="text-center font">Sign In</h3>
         </div>
-        <div class="panel-body">
+        <div class="card-body">
 
           <form  action="/accounts/login/" method="post">
             {% csrf_token %}
@@ -25,6 +26,10 @@
             </div>
 
             <input type="hidden" name="next" value="{{next}}">
+            <p>
+              Don't have an account?
+              <a href="/accounts/register/">Sign up</a>
+            </p>
 
           </form>
 

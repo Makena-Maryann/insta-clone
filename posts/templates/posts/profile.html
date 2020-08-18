@@ -4,19 +4,21 @@
   <div class="row">
     <div class="col-md-4">
      <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="{{profile.profile_photo.url}}" alt="Card image cap">
+      <!-- <img class="card-img-top" src="{{profile.profile_photo.url}}" alt="Card image cap"> -->
      </div>
     </div>
     <div class="col-md-8">
-      <h4>
+      <!-- <h4>
         {{profile.owner.username}}
       </h4>
       <h6>
-        {{profile.bio}}
+        {% autoescape on %}
+          {{profile.bio| safe}}
+        {% endautoescape %}
       </h6>
-      <a href="" class="btn btn-primary">
+      <a href="{%url 'update-profile'%}" class="btn btn-primary">
         Edit Profile
-      </a>
+      </a> -->
     </div>
   </div>
   <div class="row">

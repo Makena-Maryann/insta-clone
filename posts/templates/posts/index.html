@@ -1,32 +1,31 @@
 {%extends 'posts/base.html'%} 
 {% block content %}
+{{block.super}}
 <div class="container">
   <div class="row">
-    <div class="col-md-7">
-     {% for post in posts %}
-     <div class="card" style="width: 18rem;">
-      <div class="card-header">
-       {{ post.profile.owner.username }}
+    <div class="col-md-2"></div>
+     <div class="col-md-8">
+      {% for post in posts %}
+      <div class="card mt-2">
+        <div class="card-header font">
+        {{ user.username }}
+        </div>
+        <a href="/image/{{post.id}}/">
+        <img class="card-img-top" src="{{post.image.url}}" alt="Card image cap">
+        </a>
+        <div class="card-body">
+         <p class="card-text">
+          {% autoescape on %} 
+          {{ post.caption| safe }}
+          {% endautoescape %}
+         </p>
+         <p class="muted"> {{ post.date_posted|timesince }} ago</p>
+         <a href="{%url 'new-comment' post.id%}">Add Comment</a>
+        </div>
       </div>
-      <a href="/image/{{post.id}}/">
-       <img class="card-img-top" src="{{post.image.url}}" alt="Card image cap">
-      </a>
-      <div class="card-body">
-        <p class="card-text">
-         {% autoescape on %} 
-         {{ post.caption| safe }}
-         {% endautoescape %}
-        </p>
-        <p class="muted"> {{ image.date_posted|timesince }}</p>
-      </div>
-      {% endfor %}
-    </div>
-    </div>
-    <div class="col-md-5">
-     <h3>{{ post.profile.owner.username }}  
-     </h3>
-     <a href="" class="btn btn-primary">View Profile</a>
-    </div>
+       {% endfor %}
+     </div>
+    <div class="col-md-2"></div>
   </div>
 </div>
 {% endblock %}
