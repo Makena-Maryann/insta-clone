@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class ProfileTest(TestCase):
     def setUp(self):
         ''' method called before each test case'''
-        self.user = User.objects.create_user(username='Water')
+        self.user = User.objects.create_user(username='Maks')
 
     def tearDown(self):
         self.user.delete()
@@ -20,13 +20,10 @@ class ProfileTest(TestCase):
 
 class TestImage(TestCase):
     def setUp(self):
-        ''' method called before each test case'''
-        self.test_user = User(username='Linda', password='123')
+        self.test_user = User(username='Makena', password='123')
         self.test_user.save()
-        self.test_profile = self.test_user.profile
-        self.test_profile.save()
 
-        self.test_image = Image(image='images/test.jpg', caption='some text', profile=self.test_profile, created_on=datetime.now())
+        self.test_image = Image(image='images/test.jpg', caption='some text', author=self.test_user, date_posted=datetime.now())
 
     def test_instance(self):
         self.assertTrue(isinstance(self.test_image, Image))
